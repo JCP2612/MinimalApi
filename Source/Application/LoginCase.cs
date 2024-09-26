@@ -22,6 +22,7 @@ namespace ProductsNet.Source.Application
             var user = await _userRepository.GetUserByUsernameAsync(loginDTO.Username);
             if (user != null)
             {
+                System.Console.WriteLine("hola");
                 if (user.Password != loginDTO.Password)
                 {
                     return null;

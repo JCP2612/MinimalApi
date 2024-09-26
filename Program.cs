@@ -150,7 +150,7 @@ app.MapPost("/api/products", async (CreateProductDTO createProductDTO, AddProduc
     }
 });
 
-app.MapPatch("/api/products/{id: int}", async (int id, UpdateProductDTO updateProductDTO, UpdateProductUseCase updateCase, ProductRepository repository) =>
+app.MapPatch("/api/products/{id:int}", async (int id, UpdateProductDTO updateProductDTO, UpdateProductUseCase updateCase, ProductRepository repository) =>
 {
     try
     {
