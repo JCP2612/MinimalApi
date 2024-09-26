@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProductsNet.Source.Application.DTO;
 using ProductsNet.Source.Domain;
 using ProductsNet.Source.Infraestructure.Data;
 
@@ -24,7 +25,7 @@ namespace ProductsNet.Source.Infraestructure
 
             var result = await _context.Products
                 .GroupJoin(
-                _context.WishProducts.Where(w => w.User.Id == userId),
+                _context.Favorites.Where(w => w.User.Id == userId),
                 product => product.Id,
                 wishProduct => wishProduct.Product.Id,
                 (product, wishProducts) => new
@@ -41,7 +42,6 @@ namespace ProductsNet.Source.Infraestructure
                     Price = p.Product.Price,
                     Image = p.Product.Image,
                     Categories = p.Product.Categories.ToList(),
-                    Rate = p.Product.Rate
 
                 })
                 .ToListAsync();
